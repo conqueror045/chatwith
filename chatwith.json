@@ -1,0 +1,27 @@
+async function fetchChatbotInteractions() {
+  const url = 'https://jhyaahtapnbylouapayy.supabase.co/rest/v1/chatbot_interactions';
+  const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpoeWFhaHRhcG5ieWxvdWFwYXl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzA5ODU4NTYsImV4cCI6MjA0NjU2MTg1Nn0.Hqeq1uqa307uCcloQVwiwrQd04WBRe_QHNOjBR8C7Qc';
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'apikey': apiKey,
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching data: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log('Data fetched successfully:', data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// Call the function to read rows
+fetchChatbotInteractions();
